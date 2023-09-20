@@ -1,0 +1,52 @@
+Good frequency: 213
+Bad frequency: 696
+Bad frequency per movie: 139.2
+Main charater: 
+Lead                Secret                        Good      Yes  161  New Earth 
+
+Main villain: 
+Quentin Beck        Secret                        Bad       Yes  180  Earth-616 
+
+Side good: 
+Larvox              Public                        Good      Yes  36   New Earth 
+Pamela Hawley       Public                        Good      No   16   Earth-616 
+
+Side bad: 
+Jordan Weir         Secret                        Bad       Yes  10   New Earth 
+Felix Faust         Secret                        Bad       Yes  95   New Earth 
+Abel Tarrant        Secret                        Bad       No   30   New Earth 
+Skurge              Secret                        Bad       No   88   Earth-616 
+Hector Hammond      Public                        Bad       Yes  78   New Earth 
+Wilbur Day          Public                        Bad       No   73   Earth-616 
+Bolivar Trask       Non-dual                      Bad       No   36   Earth-616 
+Dru-Zod II          Public                        Bad       Yes  43   New Earth 
+Kala                Secret                        Bad       Yes  12   Earth-616 
+Gunther Bain        Secret                        Bad       No   51   Earth-616 
+
+Side neut: 
+Kurt Marko          Public                        Neutral   No   14   Earth-616 
+Paul Gambi          Public                        Neutral   Yes  13   New Earth 
+Victoria Bentley    Public                        Neutral   No   38   Earth-616 
+Gorgilla            Secret                        Neutral   Yes  14   Earth-616 
+Sea Imp             Non-dual                      Neutral   Yes  13   New Earth 
+Rama Kaliph         Non-dual                      Neutral   Yes  10   Earth-616 
+Bernard the Poet    Non-dual                      Neutral   Yes  11   Earth-616 
+Eternity            Secret                        Neutral   Yes  100  Earth-616 
+Phineas Mason       Public                        Neutral   Yes  62   Earth-616 
+Arthur Curry, Jr.   Public                        Neutral   No   54   New Earth 
+Manuel Eloganto     Secret                        Neutral   Yes  12   Earth-616 
+King Ra-Man         Public                        Neutral   Yes  13   New Earth 
+Krang               Secret                        Neutral   Yes  63   Earth-616 
+Owen Reece          Secret                        Neutral   No   62   Earth-616 
+Alexander Gentry    Public                        Neutral   No   44   Earth-616 
+Boris               Non-dual                      Neutral   Yes  15   Earth-616 
+Vanisher            Secret                        Neutral   Yes  89   Earth-616 
+Yuri Topolov        Secret                        Neutral   No   13   Earth-616 
+Frederick Foswell   Secret                        Neutral   No   83   Earth-616 
+Hermes              Public                        Neutral   Yes  90   New Earth 
+Christine Madison   Secret                        Neutral   Yes  17   New Earth 
+Spencer Smythe      Non-dual                      Neutral   No   21   Earth-616 
+Awesome Android     Non-dual                      Neutral   Yes  73   Earth-616 
+Warren Worthington Jr.Public                        Neutral   No   19   Earth-616 
+Impossible Man      Non-dual                      Neutral   Yes  60   Earth-616 
+
