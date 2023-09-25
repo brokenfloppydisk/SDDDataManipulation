@@ -14,8 +14,11 @@ def filter(df: pd.DataFrame, lower: int=None, upper: int=None, alignment: str=No
     if identity:
         df_2 = df_2[(df_2["Identity"] == identity)]
     if year:
-        df_2 = df_2[(df_2["First_appeared"] >= year - 3) & (df_2["First_appeared"] <= year + 3)]
+        df_2 = df_2[(df_2["First_appeared"] >= year - 30) & (df_2["First_appeared"] <= year + 30)]
     return df_2
+
+def get_freq(df: pd.DataFrame):
+    return sum(value for (index,value) in df["Appearances"].items())
 
 #  Filter the frequencies and alignments for each group
 pot_main = filter(df, lower=100, upper=300, alignment="Good", identity="Secret")
@@ -32,24 +35,43 @@ pot_side_bad  = filter(df, lower=10,  upper=100, alignment="Bad", year=chosen_ye
 
 # Get main character, main villain, and side character
 main_villain: pd.DataFrame = pot_vil.sample()
-side_good: pd.DataFrame = pot_side_good.sample(n=2)
+side_good_1: pd.DataFrame = pot_side_good.sample(n=2)
+side_good_2: pd.DataFrame = pot_side_good.sample(n=2)
+side_good = pd.concat([side_good_1, side_good_2])
 
 # # Calculate all frequencies 
 # def get_freq(df: pd.DataFrame) -> int:
 #     return sum(value for (index, value) in df["Appearances"].items())
 
 #  Calculate frequencies
-good_freq = main_character["Appearances"].item() + sum(value for (index,value) in side_good["Appearances"].items())
-evil_freq = main_villain["Appearances"].item()
+good_freq = main_character["Appearances"].item() + get_freq(side_good)
+
+good_freq_1_2 = main_character["Appearances"].item() + get_freq(side_good_1)
+good_freq_3_5 = main_character["Appearances"].item() + get_freq(side_good_2)
+
+main_villain_freq = main_villain["Appearances"].item()
 
 # Filters appearances of potential bad to ensure a balance in frequencies between bad and good chars
 # Lowest num of appearances is 10
 # Highest num of appearaches is the total of good frequencies subtracted by the current frequency of evil characters
-side_bad = filter(pot_side_bad, lower=(good_freq - evil_freq)/2, upper=(good_freq - evil_freq)/2)
-side_bad: pd.DataFrame = pot_side_bad.sample(n=10)
+
+pot_side_bad_1_2 = filter(pot_side_bad, lower=(good_freq_1_2 - main_villain_freq)/2 - 20, upper=(good_freq_1_2 - main_villain_freq)/2 + 20)
+
+
+side_bad_1: pd.DataFrame = pot_side_bad_1_2.sample(n=2)
+
+side_bad_2: pd.DataFrame = pot_side_bad_1_2.sample(n=2)
+
+pot_side_bad_3_5 = filter(pot_side_bad, lower=(good_freq_3_5 - main_villain_freq)/2 - 20, upper=(good_freq_3_5 - main_villain_freq)/2 + 20)
+
+
+
+side_bad_3: pd.DataFrame = pot_side_bad_1_2.sample(n=2)
+side_bad_4: pd.DataFrame = pot_side_bad_1_2.sample(n=2)
+side_bad_5: pd.DataFrame = pot_side_bad_1_2.sample(n=2)
 
 # Update evil frequencies
-evil_freq += sum(value for (index,value) in side_bad["Appearances"].items())
+evil_freq = main_villain_freq + get_freq(side_bad_1) + get_freq(side_bad_2) + get_freq(side_bad_3) + get_freq(side_bad_4) + get_freq(side_bad_5)
 
 # Find neutral characters
 side_neut: pd.DataFrame = pot_side_neut.sample(n=25)
@@ -75,12 +97,20 @@ def to_string(char: pd.DataFrame) -> str:
     return output_str 
 
 # Debug prints
-print(good_freq)
-print(evil_freq/5)
+
+
+all_bad = pd.concat([main_villain, side_bad_1, side_bad_2, side_bad_3, side_bad_4, side_bad_5])
+side_bad = pd.concat([side_bad_1, side_bad_2, side_bad_3, side_bad_4, side_bad_5])
 
 output  = f"Good frequency: {good_freq}\n"
-output += f"Bad frequency: {evil_freq}\n"
-output += f"Bad frequency per movie: {evil_freq/5}\n"
+output += f"Bad frequency: {evil_freq}\n\n"
+output += f"Good frequency for first and second movie: {good_freq_1_2}\n"
+output += f"Bad frequency for first movie: {get_freq(side_bad_1) + main_villain_freq}\n"
+output += f"Bad frequency for second movie: {get_freq(side_bad_2) + main_villain_freq}\n\n"
+output += f"Good frequency for third to fifth movie: {good_freq_3_5}\n"
+output += f"Bad frequency for third movie: {get_freq(side_bad_3) + main_villain_freq}\n"
+output += f"Bad frequency for fourth movie: {get_freq(side_bad_4) + main_villain_freq}\n"
+output += f"Bad frequency for last movie: {get_freq(side_bad_5) + main_villain_freq}\n\n"
 
 output += f"Main charater: \n{to_string(main_character)}\n"
 output += f"Main villain: \n{to_string(main_villain)}\n"
